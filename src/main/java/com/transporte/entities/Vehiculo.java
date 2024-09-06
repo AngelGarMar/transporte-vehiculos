@@ -1,5 +1,6 @@
 package com.transporte.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,8 +36,9 @@ public class Vehiculo implements Serializable {
     @NotNull
     @Column(name = "estatus")
     private int estatus;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "vehiculoId")
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "vehiculoId")
     private List<VehiculoConductor> vehiculoConductor;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "vehiculoId")
-    private List<DatosVehiculo> datosVehiculo;
+    @JsonIgnoreProperties({"vehiculoId", "hanlder", "hibernateLazyInitializer"})
+    private List<DatosVehiculo> datosVehiculo;*/
 }

@@ -1,6 +1,7 @@
 package com.transporte.controllers;
 
 import com.transporte.constants.Constants;
+import com.transporte.dto.RegisterDatosVehiculoRequest;
 import com.transporte.dto.RegisterVehiculoRequest;
 import com.transporte.models.ResponseService;
 import com.transporte.services.VehiculoService;
@@ -30,6 +31,15 @@ public class VehiculoController {
         }
         ResponseService registeredVehiculo = vehiculoService.registerOneVehiculo(registerVehiculoRequest);
         return new ResponseEntity<ResponseService>(registeredVehiculo, HttpStatus.OK);
+    }
+
+    @PostMapping("/datos/register")
+    public ResponseEntity<ResponseService> registerDatos(@RequestBody @Valid RegisterDatosVehiculoRequest registerDatosVehiculoRequest, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return validation(bindingResult);
+        }
+        ResponseService registeredData = vehiculoService.registerDataVehiculo(registerDatosVehiculoRequest);
+        return new ResponseEntity<ResponseService>(registeredData, HttpStatus.OK);
     }
 
     private ResponseEntity<ResponseService> validation(BindingResult result) {

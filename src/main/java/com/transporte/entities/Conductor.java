@@ -49,6 +49,6 @@ public class Conductor implements Serializable {
     private Date modificado;
     @Column(name = "estatus")
     private int estatus;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "conductorId")
-    private List<VehiculoConductor> vehiculoConductor;
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "conductorId")
+    private List<VehiculoConductor> vehiculoConductor;*/
 }

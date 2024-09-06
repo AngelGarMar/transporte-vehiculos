@@ -1,5 +1,6 @@
 package com.transporte.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -31,12 +33,13 @@ public class DatosVehiculo implements Serializable {
     @Size(min = 3, max = 3)
     private String numeco;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date creado;
+    private LocalDateTime creado;
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificado;
     @Column(name = "estatus")
     private int estatus;
     @ManyToOne
     @JoinColumn(name = "vehiculo_id")
+    @JsonIgnoreProperties({"datosVehiculo", "hanlder", "hibernateLazyInitializer"})
     private Vehiculo vehiculoId;
 }
