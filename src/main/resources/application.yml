@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: transporte-vehiculos
+  datasource:
+    url: jdbc:mysql://localhost:3306/micro_vehiculos
+    username: micro_vehiculos
+    password: transporte_v_msrv
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 0
