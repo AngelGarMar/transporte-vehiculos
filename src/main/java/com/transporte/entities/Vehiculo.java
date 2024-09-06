@@ -2,6 +2,7 @@ package com.transporte.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -27,9 +29,10 @@ public class Vehiculo implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date creado;
+    private LocalDateTime creado;
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificado;
+    @NotNull
     @Column(name = "estatus")
     private int estatus;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "vehiculoId")
