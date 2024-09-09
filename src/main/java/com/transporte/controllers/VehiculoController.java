@@ -1,9 +1,11 @@
 package com.transporte.controllers;
 
 import com.transporte.constants.Constants;
+import com.transporte.dto.RegisterConductorRequest;
 import com.transporte.dto.RegisterDatosVehiculoRequest;
 import com.transporte.dto.RegisterVehiculoRequest;
 import com.transporte.models.ResponseService;
+import com.transporte.services.ConductorService;
 import com.transporte.services.VehiculoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,11 @@ public class VehiculoController {
     @Autowired
     private VehiculoService vehiculoService;
 
+    @Autowired
+    private ConductorService conductorService;
+
     @PostMapping("/register")
-    public ResponseEntity<ResponseService> register(@RequestBody @Valid RegisterVehiculoRequest registerVehiculoRequest, BindingResult bindingResult) {
+    public ResponseEntity<ResponseService> registerVehiculo(@RequestBody @Valid RegisterVehiculoRequest registerVehiculoRequest, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return validation(bindingResult);
         }
@@ -40,6 +45,15 @@ public class VehiculoController {
         }
         ResponseService registeredData = vehiculoService.registerDataVehiculo(registerDatosVehiculoRequest);
         return new ResponseEntity<ResponseService>(registeredData, HttpStatus.OK);
+    }
+
+    @PostMapping("/conductor")
+    public ResponseEntity<ResponseService> registerConductor(@RequestBody @Valid RegisterConductorRequest registerConductorRequest, BindingResult result) {
+        if (result.hasErrors()) {
+            return validation(result);
+        }
+        ResponseService response = conductorService.registerConductor(registerConductorRequest);
+        return new ResponseEntity<ResponseService>(response, HttpStatus.OK);
     }
 
     private ResponseEntity<ResponseService> validation(BindingResult result) {

@@ -10,4 +10,6 @@ public class Constants {
     public static final String VEHICULO_NO_EXISTE = "No existe ese vehículo.";
     public static final String DATOS_VEHICULO_GUARDADO = "Datos de vehículo guardados.";
     public static final String DATOS_VEHICULO_EXISTEN = "El vehículo ya contiene datos.";
+    public static final String CONDUCTOR_EXISTENTE = "Ya existe el conductor.";
+    public static final String CONDUCTOR_GUARDADO = "Conductor Registrado.";
 }

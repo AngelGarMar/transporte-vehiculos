@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -43,10 +43,10 @@ public class Conductor implements Serializable {
     private String celular;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creado")
-    private Date creado;
+    private LocalDateTime creado;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modificado")
-    private Date modificado;
+    private LocalDateTime modificado;
     @Column(name = "estatus")
     private int estatus;
     /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "conductorId")
