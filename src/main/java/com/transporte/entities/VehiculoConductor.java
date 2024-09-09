@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "vehiculos_conductores")
@@ -22,7 +22,7 @@ public class VehiculoConductor implements Serializable {
     private Long id;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creado")
-    private Date creado;
+    private LocalDateTime creado;
     @Column(name = "estatus")
     private int estatus;
     @Column(name = "bloqueado")
