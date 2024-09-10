@@ -54,30 +54,19 @@ public class VehiculoConductorServiceImpl implements VehiculoConductorService {
             VehiculoConductor vehiculoConductorDb = vehiculoConductorOp2.get();
             vehiculoConductorDb.setEstatus(0);
             vehiculoConductorRepository.save(vehiculoConductorDb);
-            //se inserta un nuevo registro con el conductor y vehiculo
-            VehiculoConductor vehiculoConductorDb2 = VehiculoConductor.builder()
-                    .creado(LocalDateTime.now(ZoneId.of("America/Mexico_City")))
-                    .estatus(1)
-                    .bloqueado(0)
-                    .enCurso(0)
-                    .disponible(1)
-                    .conductorId(conductorDb)
-                    .vehiculoId(vehiculoDb)
-                    .build();
-            vehiculoConductorRepository.save(vehiculoConductorDb2);
-        } else {
-            //si no existe el registro, se inserta uno nuevo
-            VehiculoConductor vehiculoConductorDb2 = VehiculoConductor.builder()
-                    .creado(LocalDateTime.now(ZoneId.of("America/Mexico_City")))
-                    .estatus(1)
-                    .bloqueado(0)
-                    .enCurso(0)
-                    .disponible(1)
-                    .conductorId(conductorDb)
-                    .vehiculoId(vehiculoDb)
-                    .build();
-            vehiculoConductorRepository.save(vehiculoConductorDb2);
+
         }
+        //se inserta un nuevo registro con el conductor y vehiculo
+        VehiculoConductor vehiculoConductorDb2 = VehiculoConductor.builder()
+                .creado(LocalDateTime.now(ZoneId.of("America/Mexico_City")))
+                .estatus(1)
+                .bloqueado(0)
+                .enCurso(0)
+                .disponible(1)
+                .conductorId(conductorDb)
+                .vehiculoId(vehiculoDb)
+                .build();
+        vehiculoConductorRepository.save(vehiculoConductorDb2);
         return new ResponseService(Constants.RESPONSE_TYPE_SUCCESS, Constants.CONDUCTOR_VEHICULO_GUARDADO, null);
     }
 }
